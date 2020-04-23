@@ -1,0 +1,1 @@
+document.onload = console.log('Yea. Page is loaded');
