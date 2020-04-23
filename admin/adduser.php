@@ -1,7 +1,7 @@
 <?php include_once('../lib/header.php');
 if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
     // redirect to dashboard
-    header("Location: adduser.php");
+    header("Location: dashboard.php");
 }
 
 
@@ -9,7 +9,7 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
 <div class="login">
 	<form method="POST" action="userregprocess.php">
 		<fieldset>
-	  		<legend><h1>Register</h1></legend>
+	  		<legend><h1>New User Registration</h1></legend>
 		   		<p>All Fields are required</p>
 		    	<p>
         <?php 
@@ -66,8 +66,8 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
                 //session_unset();
 				session_destroy();
             }
-            if(isset($_SESSION['designitureerr']) && !empty($_SESSION['designitureerr'])){
-                echo "<p class='error'>" . $_SESSION['designitureerr'] . "</p>";
+            if(isset($_SESSION['designatureerr']) && !empty($_SESSION['designatureerr'])){
+                echo "<p class='error'>" . $_SESSION['designatureerr'] . "</p>";
 	
                 //session_unset();
 				session_destroy();
@@ -162,17 +162,40 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
         </p>
         <p>
             <label>Department</label><br />
-            <input
-            <?php              
-                if(isset($_SESSION['department'])){
-                    echo "value=" . $_SESSION['department'];                                                             
-                }                
-            ?>
-             type="text" name="department" placeholder="Department"  />
-           
+            <select name = "department">
+            <option value="">Select One</option>
+                <option 
+                <?php              
+                    if(isset($_SESSION['department']) && $_SESSION['department'] == 'General Consultation'){
+                        echo "selected";                                                           
+                    }                
+                ?>
+                >General Consultation</option>
+                <option
+                <?php              
+                    if(isset($_SESSION['department']) && $_SESSION['department'] == 'Emergency Services'){
+                        echo "selected";                                                           
+                    }                
+                ?>
+                >Emergency Services</option>
+                <option
+                <?php              
+                    if(isset($_SESSION['department']) && $_SESSION['department'] == 'Lab Services'){
+                        echo "selected";                                                           
+                    }                
+                ?>
+                >Lab Services</option>
+                <option
+                <?php              
+                    if(isset($_SESSION['department']) && $_SESSION['department'] == 'Xray'){
+                        echo "selected";                                                           
+                    }                
+                ?>
+                >Xray</option>
+            </select>
         </p>
         <p>
-            <button type="submit">Add User</button>
+            <button type="submit">Register</button>
         </p>
 		</fieldset>
     </form>

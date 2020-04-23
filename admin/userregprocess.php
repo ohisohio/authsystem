@@ -126,12 +126,12 @@ if($errorCount > 0){
 	$_SESSION["designitureerr"] = $designitureerr;
 	
 	$_SESSION["depterr"] = $depterr;
-    header("Location: register.php");
+    header("Location: ../admin/adduser.php");
 
 }else{
 
     //count all users
-    $allUsers = scandir("db/users/"); //return @array (2 filled)
+    $allUsers = scandir("../db/users/"); //return @array (2 filled)
 
     $countAllUsers = count($allUsers);
 
@@ -157,14 +157,14 @@ if($errorCount > 0){
 
         if($currentUser == $email . ".json"){
             $_SESSION["error"] = "Registration Failed, User already exits ";
-            header("Location: adduser.php");
+            header("Location: ../admin/index.php");
             die();
         }
         
     }
     //save in the database;
-    file_put_contents("db/users/". $email . ".json", json_encode($userObject));
-    $_SESSION["message"] = "New User Successfully Registered by Admin " . $first_name;
-    header("Location: admin/superadmin_dashboard.php");
+    file_put_contents("../db/users/". $email . ".json", json_encode($userObject));
+    $_SESSION["message"] = "User Registration by Admin Successful ";
+    header("Location: ../admin/index.php");
 }
 
