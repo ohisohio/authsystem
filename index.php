@@ -1,11 +1,8 @@
-<?php  include_once('lib/header.php');  ?>
+<?php  include_once('lib/header.php');  require_once('function/alert.php');?>
 <div class="login">
     <p>
         <?php 
-            if(isset($_SESSION['message']) && !empty($_SESSION['message'])){
-                echo "<p class='info'>" . $_SESSION['message'] . "</span>";
-                session_destroy();
-            }
+           message();
         ?>
     
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">

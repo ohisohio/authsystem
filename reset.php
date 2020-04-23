@@ -1,6 +1,6 @@
 <?php include_once('lib/header.php');
 
-if(!isset($_GET['token']) && !isset($_SESSION['token'])){
+if(!isset($_SESSION["loggedin"]) && !isset($_GET['token']) && !isset($_SESSION['token'])){
     $_SESSION['error'] = "You are not authorised to view this page";
     header("Location: login.php");
 
@@ -25,6 +25,7 @@ if(!isset($_GET['token']) && !isset($_SESSION['token'])){
 
 </p>
 
+<?php if(!$_SESSION['loggedin']) {?>
 <p>
     <input 
     <?php
@@ -35,9 +36,9 @@ if(!isset($_GET['token']) && !isset($_SESSION['token'])){
     }
     
     ?>
-    
-    
     type="hidden" value="<?php echo $_GET['token'] ?>" name="token">
+
+<?php } ?>
 </p>
 
     <p>

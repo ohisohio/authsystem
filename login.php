@@ -1,4 +1,5 @@
-<?php include_once('lib/header.php');
+<?php    include_once('lib/header.php');
+         require_once('function/alert.php');
 
 if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
     // redirect to dashboard
@@ -10,10 +11,7 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
 <div class="login">
     <p>
         <?php 
-            if(isset($_SESSION['message']) && !empty($_SESSION['message'])){
-                echo "<p class='info'>" . $_SESSION['message'] . "</p>";
-                session_destroy();
-            }
+           message();
         ?>
     </p>
     <form method="POST" action="processlogin.php">
