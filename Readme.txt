@@ -7,3 +7,5 @@ Register as a Patient or Medical Team
 If you are an admin, visit /admin/index.php
 
 Default username is admin, Default password is admin
+
+Thank you for your time.
