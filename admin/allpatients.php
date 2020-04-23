@@ -1,23 +1,26 @@
+<?php include_once('../lib/header.php'); 
+?>
 <div class="container">
 <h3>TABLE OF PATIENT</h3>
 <?php
 
-$appointmentrecord = scandir("db/appointment/");
+$appointmentrecord = scandir("../db/users/");
 $numofappoint = count($appointmentrecord);
 $exactcount = $numofappoint - 2;
 if ($exactcount == 0){
-	echo("<h4>You have no pending appointments</h4>");
+	echo("<h4>You have no patients</h4>");
 
 }else{
 
 	$temp = "<table class='table'>";
-	$temp .= "<tr><th>NAME</th>";
+	$temp .= "<tr><th>ID</th>";
+	$temp .= "<th>FIRST NAME</th>";
+	$temp .= "<th>LAST NAME</th>";
 	$temp .= "<th>EMAIL</th>";
-	$temp .= "<th>DATE</th>";
-	$temp .= "<th>TIME</th>";
-	$temp .= "<th>NATURE OF APPOINTMENT</th>";
-	$temp .= "<th>INITIAL COMPLAINT</th>";
-	$temp .= "<th>DEPARTMENT</th></tr>";
+	$temp .= "<th>GENDER</th>";
+	$temp .= "<th>DESIGNATION</th>";
+	$temp .= "<th>REG DATE</th></tr>";
+	
 
 
 
@@ -28,32 +31,36 @@ if ($exactcount == 0){
 	
 		if($Userfiles != "." && $Userfiles != ".."){
 		  //Retrieve Patients Appointment details
-			$userString = file_get_contents("db/appointment/".$Userfiles);
+			$userString = file_get_contents("../db/users/".$Userfiles);
 			$userDetails = json_decode($userString, TRUE);
 		
-		
-			$name=$userDetails["name"];
+			$id=$userDetails["id"];
+			$first_name=$userDetails["first_name"];
+			$last_name=$userDetails["last_name"];
 			$email=$userDetails["email"];
-			$dept=$userDetails["department"];
-			$date=$userDetails["appdate"];
-			$nature=$userDetails["appointmentnature"];
-			$time=$userDetails["time"];
-			$comp=$userDetails["initialcomplaint"];
+			$gender=$userDetails["gender"];
+			$designation=$userDetails["designation"];
+			$reg_date=$userDetails["reg_date"];
+			$dept = $userDetails["department"];
+			
 
 //Display only patient information for a department
-		if($_SESSION['department'] == $dept){
-//Display Patients Appointment details
-			$temp .="<tr>";
-			$temp .= "<td>".$name."</td>";
-			$temp .= "<td>".$email."</td>";
-			$temp .= "<td>".$date."</td>";
-			$temp .= "<td>".$time."</td>";
-			$temp .= "<td>".$nature."</td>";
-			$temp .= "<td>".$comp."</td>";
-			$temp .= "<td>".$dept."</td>";
-			$temp .="</tr>";
+		if($designation=="Patient"){
+		//Display Patients Appointment details
+					$temp .="<tr>";
+					$temp .= "<td>".$id."</td>";
+					$temp .= "<td>".$first_name."</td>";
+					$temp .= "<td>".$last_name."</td>";
+					$temp .= "<td>".$email."</td>";
+					$temp .= "<td>".$gender."</td>";
+					$temp .= "<td>".$designation."</td>";
+					$temp .= "<td>".$reg_date."</td>";
+								$temp .="</tr>";
+
+		}
+
 		
-	}
+	
 }
 	}
 	$temp .="</table>";
