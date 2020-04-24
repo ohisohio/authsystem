@@ -4,7 +4,10 @@
 
 $errorCount = 0;
 
-$token = $_POST['token'] != "" ? $_POST['token'] :  $errorCount++;
+if(!$_SESSION['loggedin']){
+    $token = $_POST['token'] != "" ? $_POST['token'] :  $errorCount++;
+}
+
 $email = $_POST['email'] != "" ? $_POST['email'] :  $errorCount++;
 $password = $_POST['password'] != "" ? $_POST['password'] :  $errorCount++;
 

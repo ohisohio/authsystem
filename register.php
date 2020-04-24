@@ -1,4 +1,6 @@
 <?php include_once('lib/header.php');
+require_once('function/alert.php');
+
 if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
     // redirect to dashboard
     header("Location: dashboard.php");
@@ -8,7 +10,11 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
 ?>
 <div class="login">
 	<form method="POST" action="processregister.php">
-		<fieldset>
+        <?php
+        error();
+        ?>
+    
+    <fieldset>
 	  		<legend><h1>New User Registration</h1></legend>
 		   		<p>All Fields are required</p>
 		    	<p>

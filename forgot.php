@@ -1,8 +1,14 @@
-<?php include_once('lib/header.php'); ?>
+<?php include_once('lib/header.php');
+    require_once('function/alert.php');
+?>
     <h3>Kindly Reset your password here</h3>
     <p>Provide Email Address Associated with this account</p>
 
     <form action="processforgot.php" method="post">
+    <?php
+    error();
+    ?>
+    
     <p>
             <label>Email</label><br />
             <input
