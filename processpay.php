@@ -44,8 +44,6 @@ $_SESSION['narration'] = $narration;
 
 }
 
-
-
 $curl = curl_init();
 
 $customer_email = $email;

@@ -59,6 +59,7 @@ $dblogin = $userlogin->last_login;
 
 <div class="container">
 <h3>TABLE OF PATIENT APPOINTMENTS</h3>
+
 <?php
 
 $appointmentrecord = scandir("db/appointment/");
@@ -76,9 +77,10 @@ if ($exactcount == 0){
 	$temp .= "<th>TIME</th>";
 	$temp .= "<th>NATURE OF APPOINTMENT</th>";
 	$temp .= "<th>INITIAL COMPLAINT</th>";
-	$temp .= "<th>DEPARTMENT</th></tr>";
+	$temp .= "<th>DEPARTMENT</th>";
+	$temp .= "<th>PAYMENT STATUS</th></tr>";
 
-
+	
 
 
 	for ($counter = 0; $counter < $numofappoint ; $counter++) {
@@ -99,6 +101,29 @@ if ($exactcount == 0){
 			$time=$userDetails["time"];
 			$comp=$userDetails["initialcomplaint"];
 
+			$payrecord = scandir("db/payment_success/");
+			$numofpay = count($payrecord);
+			
+		
+	for ($i = 0; $i < $numofpay ; $i++) {	   
+			$Ufiles = $payrecord[$counter];
+		
+			if($Ufiles != "." && $Ufiles != ".."){
+		
+				$userString1 = file_get_contents("db/payment_success/".$Ufiles);
+				$uDetails = json_decode($userString1, TRUE);	
+				$payemail=$uDetails["email"];
+			}
+		}
+			
+				
+
+			if($email == $payemail){
+				$status = 'Paid';
+			} else{
+				$status = 'Not Paid';
+			}
+
 //Display only patient information for a department
 		if($_SESSION['department'] == $dept){
 //Display Patients Appointment details
@@ -110,11 +135,13 @@ if ($exactcount == 0){
 			$temp .= "<td>".$nature."</td>";
 			$temp .= "<td>".$comp."</td>";
 			$temp .= "<td>".$dept."</td>";
+			$temp .= "<td>".$status."</td>";
 			$temp .="</tr>";
 		
 	}
 }
 	}
+
 	$temp .="</table>";
 
 	echo $temp;
@@ -122,14 +149,12 @@ if ($exactcount == 0){
 
 
 }
+
 ?>
 
-<
 </div>
 <div class="footer">
 	<p>&copy2020 SNH HOSPITAL</p>
 </div>
 </body>
-
-
 </html>
