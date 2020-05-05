@@ -21,6 +21,9 @@
 	<p>
 	<h3>View All Staff <span><a href="allpatients.php">Patients Page</a></span></h3>
 	</p>
+	<p>
+	<h3>View All Successful Payments <span><a href="paysuccessful.php">Patients Payment</a></span></h3>
+	</p>
 
 
 		

@@ -122,10 +122,9 @@ if ($exactcount == 0){
 
 
 }
-
-
-	
 ?>
+
+<
 </div>
 <div class="footer">
 	<p>&copy2020 SNH HOSPITAL</p>

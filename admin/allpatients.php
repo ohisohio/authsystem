@@ -1,5 +1,13 @@
-<?php include_once('../lib/header.php'); 
+<?php
+session_start();
 ?>
+
+
+<div class="appname">SNG Management System</div>
+		<div class="loggedin">Welcome <?php echo $_SESSION['first_name']; ?>! <a href="logout.php">Log Out</a></div>
+		<div>
+		<a href="superadmin_dashboard.php">Return to Dashboard</a></div>
+		</div>
 <div class="container">
 <h3>TABLE OF PATIENT</h3>
 <?php

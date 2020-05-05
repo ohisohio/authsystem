@@ -1,4 +1,6 @@
 <?php include_once('lib/header.php');
+require_once('function/alert.php');
+
 
 if(!isset($_SESSION["loggedin"]) && !isset($_GET['token']) && !isset($_SESSION['token'])){
     $_SESSION['error'] = "You are not authorised to view this page";
@@ -8,19 +10,20 @@ if(!isset($_SESSION["loggedin"]) && !isset($_GET['token']) && !isset($_SESSION['
 }
 
 
+
 ?>
+
+<div class="center_div">
+
+
+
     <h3>Kindly Reset your password here</h3>
     <p>Provide Email Address Associated with this account</p>
 
     <form action="processreset.php" method="post">
 <p>
 <?php
-                if(isset($_SESSION["error"]) && !empty($_SESSION['error'])){
-                        echo("<span style='color:red'>".$_SESSION["error"]."</span>");
-                        
-
-                        session_destroy();
-                }   
+    error(); message();
 ?>
 
 </p>
@@ -53,6 +56,6 @@ if(!isset($_SESSION["loggedin"]) && !isset($_GET['token']) && !isset($_SESSION['
             <button type="submit">Reset Password</button>
         </p>
     </form>
-
+    </div>
     
 <?php include_once('lib/footer.php'); ?>
