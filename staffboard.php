@@ -112,10 +112,10 @@ if ($exactcount == 0){
 		
 				$userString1 = file_get_contents("db/payment_success/".$Ufiles);
 				$uDetails = json_decode($userString1, TRUE);	
-				$payemail=$uDetails["email"];
+				
 			}
 		}
-			
+		$payemail=$uDetails["email"];
 				
 
 			if($email == $payemail){
