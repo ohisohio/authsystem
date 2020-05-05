@@ -7,7 +7,7 @@ if(!isset($_SESSION['loggedIn'])){
 //TODO Check and prevent submission of an empty form, Valaidation happens here
 
 ?>
-<div class="login">
+<div class="center_div">
 	<form method="POST" action="processappointment.php">
 		<fieldset>
 	  		<legend><h1>Book Appointment</h1></legend>

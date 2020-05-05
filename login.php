@@ -8,10 +8,10 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
 // include_once('lib/header.php'); 
 
 ?>
-<div class="login">
+<div class="center_div">
     <p>
         <?php 
-           message();
+           message(); error();
         ?>
     </p>
     <form method="POST" action="processlogin.php">
@@ -19,11 +19,6 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
 	  <legend><h1>Log In</h1></legend>
       <p>
         <?php 
-            if(isset($_SESSION['error']) && !empty($_SESSION['error'])){
-                echo "<p class='error'>" . $_SESSION['error'] . "</p>";
-
-                }
-			
             if(isset($_SESSION['emailerr']) && !empty($_SESSION['emailerr'])){
                 echo "<p class='error'>" . $_SESSION['emailerr'] . "</p>";
                 session_unset();
@@ -63,5 +58,5 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
         </p>
 	  </fieldset>
     </form>
-
+            </div>
 <?php include_once('lib/footer.php'); ?>

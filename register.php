@@ -8,10 +8,10 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
 
 
 ?>
-<div class="login">
+<div class="center_div">
 	<form method="POST" action="processregister.php">
         <?php
-        error();
+        error(); message();
         ?>
     
     <fieldset>
@@ -205,4 +205,5 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
         </p>
 		</fieldset>
     </form>
+                </div>
 <?php include_once('lib/footer.php'); ?>
